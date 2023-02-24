@@ -34,7 +34,7 @@ public class PortfolioReport
                 p.buyStock(data[]);
             } else {
                 //Sell the stock from the portfolio.
-                p.sellStock();
+                p.sellStock(data[]);
             }
         }
 

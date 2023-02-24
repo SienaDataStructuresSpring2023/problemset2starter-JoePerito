@@ -44,7 +44,7 @@ public class Portfolio
         }
         this.lifeTimeInv++;
         
-        return "num shares: " + stocks.get(index).getNumShares() + "\n" + "Price: " + stocks.get(index).getPrice();
+        return stocks.get(index).getNumShares()*stocks.get(index).getPrice();
 
     }
     
@@ -57,12 +57,12 @@ public class Portfolio
         }
         this.lifeTimePayout++;
         
-        return "num shares: " + stocks.get(index).getNumShares() + "\n" + "Price: " + stocks.get(index).getPrice();
+        return stocks.get(index).getNumShares() * stocks.get(index).getPrice();
 
     }
     
     public double getCurrentValue(){
-        double portfolio;
+        double portfolio=0;
         for(int i = 0; i<stocks.size(); i++){
             portfolio += stocks.get(i).getNumShares() * stocks.get(i).getPrice();
         }
