@@ -42,14 +42,23 @@ public class Portfolio
         }else{
             stocks.add(new StockHolding(symbol,name, numShares, price));
         }
-        this.lifeTimePayout++;
+        this.lifeTimeInv++;
         
         return "num shares: " + stocks.get(index).getNumShares() + "\n" + "Price: " + stocks.get(index).getPrice();
 
     }
     
     public double sellStock(String symbol,int numShares){
+        int index = getIndex(symbol);
+        if(index != -1){
+            stocks.get(index).sellShares(numShares, stocks.get(index).getPrice());
+        }else{
+            stocks.remove(stocks.get(index));
+        }
+        this.lifeTimePayout++;
         
+        return "num shares: " + stocks.get(index).getNumShares() + "\n" + "Price: " + stocks.get(index).getPrice();
+
     }
     
     public double getCurrentValue(){
