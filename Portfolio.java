@@ -13,12 +13,12 @@ public class Portfolio
     private double lifeTimePayout;
 
     public Portfolio(){
-        ArrayList<StockHolding> stocks = new ArrayList<StockHolding>();
+        stocks = new ArrayList<StockHolding>();
         this.lifeTimeInv=0;
         this.lifeTimePayout=0;
     }   
 
-    public double getLiftTimeInv(){
+    public double getLifeTimeInv(){
         return lifeTimeInv;
     }
 
@@ -41,8 +41,9 @@ public class Portfolio
             stocks.get(index).buyShares(numShares, price);
         }else{
             stocks.add(new StockHolding(symbol,name, numShares, price));
+            index = getIndex(symbol);
         }
-        this.lifeTimeInv++;
+        this.lifeTimeInv += stocks.get(index).getNumShares() * stocks.get(index).getPrice();
         
         return stocks.get(index).getNumShares()*stocks.get(index).getPrice();
 
@@ -55,7 +56,7 @@ public class Portfolio
         }else{
             stocks.remove(stocks.get(index));
         }
-        this.lifeTimePayout++;
+        this.lifeTimePayout +=stocks.get(index).getNumShares() * stocks.get(index).getPrice();
         
         return stocks.get(index).getNumShares() * stocks.get(index).getPrice();
 
